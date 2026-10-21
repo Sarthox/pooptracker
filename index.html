@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafafa">
+  <title>Die longitudinale emoji-basierte Defäkationsstudie</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/vendor/plotly-2.35.2.min.js"></script>
+  <script defer src="js/vendor/papaparse-5.4.1.min.js"></script>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/story.js"></script>
+  <script defer src="js/charts.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="#home">INSTITUT FÜR ANGEWANDTE ALLTAGSWISSENSCHAFT</a>
+    <nav aria-label="Navigation durch den Forschungsbericht">
+      <a href="#competition">Die Rivalität</a>
+      <a href="#patterns">Die Muster</a>
+      <a href="#records">Die Rekorde</a>
+      <button id="print-report" type="button" disabled>Bericht drucken</button>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="report-title">
+      <div class="eyebrow">Beobachtungsstudie / Band 01 / Wissenschaftlich unbegutachtet</div>
+      <div class="hero-grid">
+        <div>
+          <h1 id="report-title">Die longitudinale emoji-basierte <em>Defäkationsstudie</em></h1>
+          <p class="subtitle">Eine mehrjährige Analyse gastrointestinaler Produktivität</p>
+          <p class="intro">Zwei Versuchspersonen. Ein Chat. Ein außergewöhnlicher Einsatz für die Dokumentation des Gewöhnlichen. Eine seriös anmutende Untersuchung eines ausgesprochen unseriösen Datensatzes.</p>
+        </div>
+        <aside class="study-stamp" aria-label="Angaben zur Studie">
+          <span class="stamp-number">n = <span id="sample-size">…</span></span>
+          <span>dokumentierte Emoji-Ereignisse</span>
+          <hr>
+          <span id="observation-period">Beobachtungszeitraum wird geladen…</span>
+          <span class="small-caps">Jakob &amp; Sina · Langzeitkohorte</span>
+        </aside>
+      </div>
+      <div class="participant-key"><span class="key jakob">Jakob</span><span class="key sina">Sina</span><span class="key-note">Gleiche wissenschaftliche Würde. Ungleicher Ausstoß.</span></div>
+      <div id="status" role="status" aria-live="polite">Das Forschungsarchiv wird geöffnet…</div>
+      <div id="kpis" class="kpi-grid" aria-label="Kennzahlen der Studie"></div>
+    </section>
+
+    <aside class="abstract">
+      <span class="eyebrow">Zusammenfassung</span>
+      <p>Untersucht wird ein mehrjähriges Archiv exakt passender Emoji-Nachrichten hinsichtlich Beitragsleistung, Beständigkeit und verdächtig abgestimmter Zeitplanung. Die Befunde deuten auf eine anhaltende Rivalität, eine ausgeprägte Morgenpräferenz und mindestens einen Zufall hin, der einen eigenen Förderantrag verdient hätte.</p>
+      <p class="fine-print">Erfasst sind selbst gemeldete Chatnachrichten, keine verifizierten körperlichen Vorgänge. Daraus ergeben sich weder klinische Aussagen noch Kausalnachweise oder statistische Signifikanz.</p>
+    </aside>
+
+    <section id="competition" class="chapter">
+      <div class="section-heading"><span class="chapter-number">01</span><div><div class="eyebrow">Eine Frage der Aktenlage</div><h2>Die stille Rivalität.</h2></div></div>
+      <figure class="chart-card flagship">
+        <figcaption><div><span class="figure-number">Abb. 01</span><h3>Der Verlauf der Meisterschaft</h3><p>Kumulierte Ereignisse von Jakob minus kumulierte Ereignisse von Sina. Jeder Tag zählt.</p></div><button class="export" data-chart="championship" disabled>SVG exportieren</button></figcaption>
+        <div id="championship" class="plot plot-wide" role="img" aria-label="Täglicher kumulierter Vorsprung: Positive Werte bedeuten, Jakob führt; negative Werte bedeuten, Sina führt."></div>
+        <div class="chart-note"><span>Über null: Jakob führt. Unter null: Sina führt.</span><strong id="lead-summary"></strong></div>
+      </figure>
+      <div class="two-column growth-grid">
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 02</span><h3>Engagement mit Zinseszinseffekt</h3><p>Kumulierte dokumentierte Ereignisse, Tag für Tag.</p></div><button class="export" data-chart="cumulative" disabled>SVG exportieren</button></figcaption>
+          <div id="cumulative" class="plot" role="img" aria-label="Kumulierte Ereigniszahlen für Jakob und Sina."></div>
+          <p class="chart-note">Es geht stetig aufwärts. Zumindest in der Buchhaltung.</p>
+        </figure>
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 03</span><h3>Ein Gemeinschaftsunternehmen</h3><p>Anteile an allen dokumentierten Ereignissen.</p></div><button class="export" data-chart="share" disabled>SVG exportieren</button></figcaption>
+          <div id="share" class="plot" role="img" aria-label="Prozentualer Beitrag je Versuchsperson."></div>
+          <p id="share-summary" class="chart-note"></p>
+        </figure>
+      </div>
+      <figure class="chart-card">
+        <figcaption><div><span class="figure-number">Abb. 04</span><h3>Der monatliche Produktionsbericht</h3><p>Monatliche Gesamtmengen, direkt aus dem Forschungsarchiv.</p></div><button class="export" data-chart="monthly" disabled>SVG exportieren</button></figcaption>
+        <div id="monthly" class="plot plot-wide" role="img" aria-label="Gestapelte monatliche Ereigniszahlen je Versuchsperson."></div>
+        <p class="chart-note">Der erste und letzte Monat umfassen nur den jeweils beobachteten Teilzeitraum.</p>
+      </figure>
+    </section>
+
+    <section id="patterns" class="chapter">
+      <div class="section-heading"><span class="chapter-number">02</span><div><div class="eyebrow">Zeitliche Regelmäßigkeiten</div><h2>Alles hat seine Zeit.</h2></div></div>
+      <div class="two-column">
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 05</span><h3>Die Jahresabschlüsse</h3><p>Dokumentierte Ereignisse nach Kalenderjahr.</p></div><button class="export" data-chart="yearly" disabled>SVG exportieren</button></figcaption>
+          <div id="yearly" class="plot" role="img" aria-label="Gestapelte jährliche Ereigniszahlen je Versuchsperson."></div>
+          <p class="chart-note">2023 und 2026 sind nur teilweise erfasst; die Gesamtzahlen sind nicht um die Beobachtungsdauer bereinigt.</p>
+        </figure>
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 06</span><h3>Die betriebliche Wochenbilanz</h3><p>Alle Ereignisse, Montag bis Sonntag.</p></div><button class="export" data-chart="weekday" disabled>SVG exportieren</button></figcaption>
+          <div id="weekday" class="plot" role="img" aria-label="Ereigniszahlen nach Wochentag in Kalenderreihenfolge."></div>
+          <p class="chart-note">Der Kalender liefert die Struktur. Die Versuchspersonen liefern das Material.</p>
+        </figure>
+      </div>
+      <div class="two-column">
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 07</span><h3>Saisonale Produktionsschwankungen</h3><p>Gemeinsamer Ausstoß nach meteorologischer Jahreszeit.</p></div><button class="export" data-chart="seasonal" disabled>SVG exportieren</button></figcaption>
+          <div id="seasonal" class="plot" role="img" aria-label="Gemeinsame Ereigniszahlen nach Jahreszeit."></div>
+          <p class="chart-note">Jahreszeiten der Nordhalbkugel. Unterschiedliche Beobachtungsdauern; Anzahlen sind keine Raten.</p>
+        </figure>
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 08</span><h3>Die zirkadiane Hypothese</h3><p>Alle Ereignisse nach dokumentierter Tagesstunde.</p></div><button class="export" data-chart="hourly" disabled>SVG exportieren</button></figcaption>
+          <div id="hourly" class="plot" role="img" aria-label="Stündliche Ereigniszahlen mit hervorgehobener Spitzenstunde."></div>
+          <p id="peak-summary" class="chart-note"></p>
+        </figure>
+      </div>
+      <figure class="chart-card heatmap-card">
+        <figcaption><div><span class="figure-number">Abb. 09</span><h3>Jakob gegen Sina: das Feldtagebuch</h3><p>Jede Zelle entspricht einem Kalendertag. Je dunkler, desto höher die gemeinsame Tagesleistung.</p></div><button class="export" data-chart="heatmap" disabled>SVG exportieren</button></figcaption>
+        <div class="heatmap-scroll"><div id="heatmap" class="plot plot-heatmap" role="img" aria-label="Farbmatrix der täglichen Gesamtereignisse: eine Zeile je Kalendermonat, Spalten für die Tage 1 bis 31. Beim Darüberfahren erscheinen die Einzelwerte für Jakob und Sina."></div></div>
+        <p class="chart-note">Mit der Maus über einen Tag fahren, um die Aufteilung Jakob / Sina zu sehen. Leere Zellen liegen außerhalb des Beobachtungszeitraums oder existieren nicht; blasse Zellen kennzeichnen beobachtete Tage ohne Ereignis.</p>
+      </figure>
+    </section>
+
+    <section id="records" class="chapter">
+      <div class="section-heading"><span class="chapter-number">03</span><div><div class="eyebrow">Außerordentliche Verdienste</div><h2>Die Ruhmeshalle.</h2></div></div>
+      <div id="record-cards" class="record-grid"></div>
+      <figure class="chart-card">
+        <figcaption><div><span class="figure-number">Abb. 10</span><h3>Unabhängige Personen. Auffällige Zeitplanung.</h3><p>Direkt aufeinanderfolgende Ereignisse verschiedener Personen nach maximalem Zeitabstand.</p></div><button class="export" data-chart="synchronization" disabled>SVG exportieren</button></figcaption>
+        <div id="synchronization" class="plot" role="img" aria-label="Personenwechsel zwischen Ereignissen innerhalb von 5, 15, 30 und 60 Minuten."></div>
+        <p class="chart-note">Die Schwellenwerte sind ineinander enthalten und dürfen nicht addiert werden. Benachbarte Personenwechsel können ein Ereignis gemeinsam haben. Zeitliche Nähe beweist keine Absprache.</p>
+      </figure>
+    </section>
+
+    <section class="conclusions chapter">
+      <div class="section-heading"><span class="chapter-number">04</span><div><div class="eyebrow">Diskussion &amp; Tragweite</div><h2>Die Wissenschaft hat gesprochen. So ungefähr.</h2></div></div>
+      <div class="finding"><span>Befund 01</span><div><h3>Die Frühschicht hält den Betrieb am Laufen.</h3><p id="morning-finding">Die dokumentierte Aktivität konzentriert sich auf den Vormittag.</p></div></div>
+      <div class="finding"><span>Befund 02</span><div><h3>Der Sommer führt die saisonale Rohbilanz an.</h3><p id="summer-finding">Erhöhter Durchsatz, ohne Anspruch auf statistische Signifikanz. Eine Beteiligung der Sonne bleibt unbewiesen.</p></div></div>
+      <div class="finding"><span>Befund 03</span><div><h3>Sechs Sekunden. Viele Fragen.</h3><p>Der kürzeste personenübergreifende Abstand ist klein genug für eine Folgestudie, aber allein nicht aussagekräftig genug, um irgendetwas zu beweisen. Das Forschungsteam verzichtet höflich auf Spekulationen über den Wohnungsgrundriss.</p></div></div>
+      <blockquote>„Nicht alles, was sich zählen lässt, muss gezählt werden.<br>Wir haben es trotzdem getan.“<cite>— Vermutlich das Forschungsteam</cite></blockquote>
+    </section>
+
+    <section id="appendix" class="chapter appendix">
+      <div class="section-heading"><span class="chapter-number">05</span><div><div class="eyebrow">Statistischer Anhang / Für die besonders Gründlichen</div><h2>Die Buchhaltung der Beständigkeit.</h2></div></div>
+      <p class="appendix-intro">Weil hinter jeder großen Gesamtsumme zwei sehr individuelle Arbeitsweisen stehen. Hier folgen Anwesenheitslisten, persönliche Betriebszeiten und die wissenschaftlich bislang unterschätzte Kunst des Wartens.</p>
+      <div id="activity-cards" class="record-grid" aria-label="Aktive Tage, gemeinsame Tage, inaktive Tage und Tagesdurchschnitt"></div>
+      <p class="appendix-note">„Aktiv“ bedeutet: mindestens eine passende Nachricht. Tage mit beiden Personen sind in den aktiven Tagen bereits enthalten. „Inaktiv“ bedeutet nur Funkstille im Archiv, nicht Stillstand im Verdauungstrakt.</p>
+
+      <div id="personal-profiles" class="two-column" aria-label="Persönliche Aktivitätsprofile"></div>
+      <figure class="chart-card">
+        <figcaption><div><span class="figure-number">Abb. 11</span><h3>Zwei innere Uhren, ein Forschungsauftrag</h3><p>Persönliche Stundenverteilungen im direkten Vergleich.</p></div><button class="export" data-chart="personal-hourly" disabled>SVG exportieren</button></figcaption>
+        <div id="personal-hourly" class="plot plot-wide" role="img" aria-label="Gruppierte stündliche Ereigniszahlen von Jakob und Sina von 00 bis 23 Uhr."></div>
+        <p class="chart-note">Dokumentierte Uhrzeiten, unverändert aus der Statistik. Die Frühschicht ist offenbar unterschiedlich organisiert.</p>
+      </figure>
+      <div class="two-column">
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 12</span><h3>Die persönlichen Dienstpläne</h3><p>Ereignisse je Person und Wochentag.</p></div><button class="export" data-chart="personal-weekday" disabled>SVG exportieren</button></figcaption>
+          <div id="personal-weekday" class="plot" role="img" aria-label="Gruppierte Ereigniszahlen von Jakob und Sina nach Wochentag, Montag bis Sonntag."></div>
+          <p class="chart-note">Absolute Anzahlen, keine um die Zahl beobachteter Wochentage bereinigten Raten. Wochenendzulagen wurden nicht erfasst.</p>
+        </figure>
+        <figure class="chart-card">
+          <figcaption><div><span class="figure-number">Abb. 13</span><h3>Saisonkräfte im Dauereinsatz</h3><p>Ereignisse je Person und Jahreszeit.</p></div><button class="export" data-chart="personal-seasonal" disabled>SVG exportieren</button></figcaption>
+          <div id="personal-seasonal" class="plot" role="img" aria-label="Gruppierte Ereigniszahlen von Jakob und Sina für Winter, Frühling, Sommer und Herbst."></div>
+          <p class="chart-note">Meteorologische Jahreszeiten der Nordhalbkugel. Unterschiedliche Beobachtungsdauern; keine saisonbereinigten Produktionsraten.</p>
+        </figure>
+      </div>
+
+      <article class="detail-card">
+        <h3>Zwischen den Meldungen liegt die Geduld</h3>
+        <p>Mittelwert, Median und Spannweite direkt aufeinanderfolgender Nachrichten: einmal für das gesamte Archiv und einmal innerhalb jeder persönlichen Ereignisfolge.</p>
+        <div class="table-scroll"><table class="stats-table"><caption>Abstände zwischen aufeinanderfolgenden Ereignissen</caption><thead><tr><th scope="col">Ereignisfolge</th><th scope="col">Intervalle</th><th scope="col">Mittelwert</th><th scope="col">Median</th><th scope="col">Minimum</th><th scope="col">Maximum</th></tr></thead><tbody id="interval-rows"></tbody></table></div>
+        <p class="appendix-note">Der Mittelwert reagiert auf lange Pausen; der Median teilt die Abstände in zwei Hälften. Beide sagen nichts über die tatsächlichen Vorgänge zwischen den Nachrichten aus.</p>
+      </article>
+      <h3 class="appendix-subheading">Persönliche Abstandsrekorde: zwischen Eile und Sendepause</h3>
+      <div id="personal-gap-cards" class="record-grid" aria-label="Kürzeste und längste persönliche Ereignisabstände"></div>
+
+      <article class="detail-card">
+        <h3>Konstanz ist auch eine Form von Leistung</h3>
+        <p>Eine Serie besteht aus aufeinanderfolgenden Kalendertagen, die das jeweilige Aktivitätskriterium erfüllen. Unterbrechungen beenden die Serie, nicht die wissenschaftliche Würde.</p>
+        <div class="table-scroll"><table class="stats-table"><caption>Aktivitätsserien und ihre längsten zusammenhängenden Zeiträume</caption><thead><tr><th scope="col">Aktivitätskriterium</th><th scope="col">Längste Serie</th><th scope="col">Beginn</th><th scope="col">Ende</th><th scope="col">Serien insgesamt</th></tr></thead><tbody id="streak-rows"></tbody></table></div>
+        <p class="appendix-note">„Beide aktiv“ verlangt jeden Tag mindestens eine Meldung von jeder Person. „Mindestens eine Person aktiv“ erlaubt wechselnde Besetzung. Diese Kriterien und ihre Serienzahlen sind nicht addierbar.</p>
+      </article>
+
+      <article class="detail-card">
+        <h3>Wie lange lässt die Gegenseite auf sich warten?</h3>
+        <p>Für jedes Ereignis einer Person wird das nächste spätere Ereignis der jeweils anderen Person betrachtet. Die Richtung ist wichtig: Jakob → Sina ist nicht dasselbe wie Sina → Jakob.</p>
+        <div class="table-scroll"><table class="stats-table"><caption>Wartezeiten bis zur nächsten Meldung der anderen Person</caption><thead><tr><th scope="col">Richtung</th><th scope="col">Auswertbare Ereignisse</th><th scope="col">Mittelwert</th><th scope="col">Median</th><th scope="col">Minimum</th><th scope="col">Maximum</th></tr></thead><tbody id="waiting-rows"></tbody></table></div>
+        <p class="appendix-note">Anders als in Abb. 10 müssen die beiden Ereignisse nicht direkt benachbart sein. Mehrere Ausgangsereignisse können dieselbe nächste Meldung der anderen Person haben. Ohne spätere Gegenmeldung bleibt ein Ausgangsereignis unauswertbar. Gemessen wird zeitlicher Abstand, keine Reaktionszeit und erst recht keine Absprache.</p>
+      </article>
+    </section>
+
+    <section class="methods" aria-labelledby="methods-title">
+      <h2 id="methods-title">Methodik, Einschränkungen &amp; Reproduzierbarkeit</h2>
+      <div class="two-column">
+        <div><h3>Was zählt als Ereignis?</h3><p id="event-definition"></p><p>Der Beobachtungszeitraum umfasst alle Kalendertage von der ersten bis zur letzten passenden Nachricht. Eine Nachrichtenpause sagt nichts über das Geschehen abseits des Chats aus. Uhrzeiten werden unverändert und ohne Zeitzonenumrechnung übernommen.</p></div>
+        <div><h3>Was zählt als Beleg?</h3><p>Aggregierte Kennzahlen, Rekorde und zeitliche Schwellenwerte werden direkt aus der vorberechneten Statistik übernommen. Die Tagesdaten liefern nur die kumulierten Kurven und die Kalender-Farbmatrix. Das Einzelereignisarchiv wird nicht geladen. Diese Seite verwendet weder KI noch Nutzungsanalyse oder externe Dienste.</p><p>Zwei Versuchspersonen, Selbstauskunft und keine Kontrollgruppe: ein beschreibendes Privatarchiv im Laborkittel, keine medizinische Forschung.</p></div>
+      </div>
+      <div class="source-links"><a href="data/stats.json" download>Statistik herunterladen</a><a href="data/daily_summary.csv" download>Tagesdaten herunterladen</a><a href="data/events.csv" download>Ereignisarchiv herunterladen</a></div>
+    </section>
+  </main>
+  <footer><span>INSTITUT FÜR ANGEWANDTE ALLTAGSWISSENSCHAFT</span><span>Kleine Stichprobe. Lange Beobachtung. Unnötige Präzision.</span><span id="archive-date"></span></footer>
+  <noscript><p class="noscript">Zum Laden der lokalen Datensätze und Zeichnen der Diagramme ist JavaScript erforderlich. Es werden keine Daten an einen Server übertragen.</p></noscript>
+</body>
+</html>

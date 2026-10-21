@@ -1,0 +1,565 @@
+{
+  "metadata": {
+    "generated_at": "2026-10-19T11:49:45",
+    "event_definition": "A message is counted once only when its trimmed full body equals the configured emoji exactly. Extra text, extra emojis, and multi-line bodies do not count.",
+    "date_range": {
+      "start": "2023-08-22",
+      "end": "2026-10-15"
+    },
+    "people": {
+      "Jakob": "💩",
+      "Sina 🥰": "🦄"
+    },
+    "event_count": 2527,
+    "parse": {
+      "physical_lines": 179779,
+      "parsed_message_starts": 152526,
+      "messages_without_sender": 2,
+      "unparsed_timestamp_lines": 0,
+      "timestamp_parse_errors": []
+    },
+    "interpretation_notes": [
+      "These are documented emoji messages, not verified real-world events.",
+      "The observed period runs from the first matching event to the last matching event, inclusive.",
+      "A gap is measured between matching message timestamps; it does not imply what happened offline.",
+      "Weekday names use English labels from Python's locale-independent strftime defaults.",
+      "Season uses Northern Hemisphere meteorological seasons."
+    ],
+    "matching_events": 2527,
+    "messages_by_configured_senders": {
+      "Jakob": 84061,
+      "Sina 🥰": 68463
+    },
+    "unmatched_messages_from_configured_senders": {
+      "Jakob": 82637,
+      "Sina 🥰": 67360
+    }
+  },
+  "overall": {
+    "event_count": 2527,
+    "first_event": "2023-08-22 12:19:28",
+    "last_event": "2026-10-15 11:47:20",
+    "observed_calendar_days_inclusive": 1151,
+    "active_days_anyone": 1092,
+    "days_both_people_active": 727,
+    "days_with_no_matching_event_in_observed_range": 59,
+    "overall_average_per_calendar_day": 2.1955,
+    "overall_average_per_active_day": 2.3141,
+    "total_by_person": {
+      "Sina 🥰": 1103,
+      "Jakob": 1424
+    },
+    "share_by_person_percent": {
+      "Jakob": 56.35,
+      "Sina 🥰": 43.65
+    },
+    "overall_intervals_between_consecutive_events": {
+      "count": 2526,
+      "min_seconds": 2.0,
+      "median_seconds": 22434.5,
+      "mean_seconds": 39334.154,
+      "max_seconds": 255382.0,
+      "min_interval": "2s",
+      "max_interval": "2d 22h 56m 22s"
+    },
+    "shortest_consecutive_event_gap": {
+      "from_person": "Sina 🥰",
+      "from_timestamp": "2024-03-04 13:50:37",
+      "to_person": "Sina 🥰",
+      "to_timestamp": "2024-03-04 13:50:39",
+      "seconds": 2.0,
+      "formatted": "2s"
+    },
+    "longest_consecutive_event_gap": {
+      "from_person": "Sina 🥰",
+      "from_timestamp": "2023-11-06 10:33:18",
+      "to_person": "Jakob",
+      "to_timestamp": "2023-11-09 09:29:40",
+      "seconds": 255382.0,
+      "formatted": "2d 22h 56m 22s"
+    },
+    "most_active_day": {
+      "date": "2024-03-04",
+      "total": 8,
+      "by_person": {
+        "Jakob": 4,
+        "Sina 🥰": 4
+      },
+      "first_event": "2024-03-04 03:39:18",
+      "last_event": "2024-03-04 20:48:10"
+    },
+    "most_active_hour": {
+      "hour_range": "09:00–09:59",
+      "count": 556
+    },
+    "hourly_counts": {
+      "00": 6,
+      "01": 6,
+      "02": 3,
+      "03": 2,
+      "04": 0,
+      "05": 0,
+      "06": 7,
+      "07": 32,
+      "08": 209,
+      "09": 556,
+      "10": 493,
+      "11": 289,
+      "12": 197,
+      "13": 148,
+      "14": 147,
+      "15": 87,
+      "16": 80,
+      "17": 66,
+      "18": 55,
+      "19": 37,
+      "20": 50,
+      "21": 20,
+      "22": 16,
+      "23": 21
+    },
+    "weekday_counts": {
+      "Monday": 442,
+      "Tuesday": 364,
+      "Wednesday": 349,
+      "Thursday": 370,
+      "Friday": 308,
+      "Saturday": 331,
+      "Sunday": 363
+    },
+    "season_counts": {
+      "Winter": 530,
+      "Frühling": 605,
+      "Sommer": 717,
+      "Herbst": 675
+    },
+    "yearly_counts": {
+      "2023": {
+        "total": 219,
+        "Jakob": 115,
+        "Sina 🥰": 104
+      },
+      "2024": {
+        "total": 839,
+        "Jakob": 448,
+        "Sina 🥰": 391
+      },
+      "2025": {
+        "total": 786,
+        "Jakob": 455,
+        "Sina 🥰": 331
+      },
+      "2026": {
+        "total": 683,
+        "Jakob": 406,
+        "Sina 🥰": 277
+      }
+    },
+    "monthly_counts": {
+      "2023-08": {
+        "total": 22,
+        "Jakob": 12,
+        "Sina 🥰": 10
+      },
+      "2023-09": {
+        "total": 46,
+        "Jakob": 24,
+        "Sina 🥰": 22
+      },
+      "2023-10": {
+        "total": 56,
+        "Jakob": 27,
+        "Sina 🥰": 29
+      },
+      "2023-11": {
+        "total": 44,
+        "Jakob": 24,
+        "Sina 🥰": 20
+      },
+      "2023-12": {
+        "total": 51,
+        "Jakob": 28,
+        "Sina 🥰": 23
+      },
+      "2024-01": {
+        "total": 57,
+        "Jakob": 29,
+        "Sina 🥰": 28
+      },
+      "2024-02": {
+        "total": 50,
+        "Jakob": 26,
+        "Sina 🥰": 24
+      },
+      "2024-03": {
+        "total": 75,
+        "Jakob": 39,
+        "Sina 🥰": 36
+      },
+      "2024-04": {
+        "total": 52,
+        "Jakob": 25,
+        "Sina 🥰": 27
+      },
+      "2024-05": {
+        "total": 66,
+        "Jakob": 35,
+        "Sina 🥰": 31
+      },
+      "2024-06": {
+        "total": 76,
+        "Jakob": 42,
+        "Sina 🥰": 34
+      },
+      "2024-07": {
+        "total": 88,
+        "Jakob": 46,
+        "Sina 🥰": 42
+      },
+      "2024-08": {
+        "total": 76,
+        "Jakob": 46,
+        "Sina 🥰": 30
+      },
+      "2024-09": {
+        "total": 75,
+        "Jakob": 41,
+        "Sina 🥰": 34
+      },
+      "2024-10": {
+        "total": 82,
+        "Jakob": 46,
+        "Sina 🥰": 36
+      },
+      "2024-11": {
+        "total": 73,
+        "Jakob": 34,
+        "Sina 🥰": 39
+      },
+      "2024-12": {
+        "total": 69,
+        "Jakob": 39,
+        "Sina 🥰": 30
+      },
+      "2025-01": {
+        "total": 70,
+        "Jakob": 38,
+        "Sina 🥰": 32
+      },
+      "2025-02": {
+        "total": 58,
+        "Jakob": 30,
+        "Sina 🥰": 28
+      },
+      "2025-03": {
+        "total": 79,
+        "Jakob": 41,
+        "Sina 🥰": 38
+      },
+      "2025-04": {
+        "total": 59,
+        "Jakob": 34,
+        "Sina 🥰": 25
+      },
+      "2025-05": {
+        "total": 79,
+        "Jakob": 46,
+        "Sina 🥰": 33
+      },
+      "2025-06": {
+        "total": 73,
+        "Jakob": 47,
+        "Sina 🥰": 26
+      },
+      "2025-07": {
+        "total": 67,
+        "Jakob": 40,
+        "Sina 🥰": 27
+      },
+      "2025-08": {
+        "total": 65,
+        "Jakob": 36,
+        "Sina 🥰": 29
+      },
+      "2025-09": {
+        "total": 59,
+        "Jakob": 37,
+        "Sina 🥰": 22
+      },
+      "2025-10": {
+        "total": 58,
+        "Jakob": 33,
+        "Sina 🥰": 25
+      },
+      "2025-11": {
+        "total": 54,
+        "Jakob": 33,
+        "Sina 🥰": 21
+      },
+      "2025-12": {
+        "total": 65,
+        "Jakob": 40,
+        "Sina 🥰": 25
+      },
+      "2026-01": {
+        "total": 61,
+        "Jakob": 42,
+        "Sina 🥰": 19
+      },
+      "2026-02": {
+        "total": 49,
+        "Jakob": 29,
+        "Sina 🥰": 20
+      },
+      "2026-03": {
+        "total": 59,
+        "Jakob": 37,
+        "Sina 🥰": 22
+      },
+      "2026-04": {
+        "total": 64,
+        "Jakob": 36,
+        "Sina 🥰": 28
+      },
+      "2026-05": {
+        "total": 72,
+        "Jakob": 43,
+        "Sina 🥰": 29
+      },
+      "2026-06": {
+        "total": 76,
+        "Jakob": 43,
+        "Sina 🥰": 33
+      },
+      "2026-07": {
+        "total": 89,
+        "Jakob": 56,
+        "Sina 🥰": 33
+      },
+      "2026-08": {
+        "total": 85,
+        "Jakob": 48,
+        "Sina 🥰": 37
+      },
+      "2026-09": {
+        "total": 83,
+        "Jakob": 48,
+        "Sina 🥰": 35
+      },
+      "2026-10": {
+        "total": 45,
+        "Jakob": 24,
+        "Sina 🥰": 21
+      }
+    },
+    "active_day_streak_anyone": {
+      "longest_days": 113,
+      "start": "2024-09-02",
+      "end": "2024-12-23",
+      "streak_count": 58
+    },
+    "active_day_streak_both_people": {
+      "longest_days": 19,
+      "start": "2024-10-07",
+      "end": "2024-10-25",
+      "streak_count": 269
+    },
+    "cross_person_timing": {
+      "pairing_method": "Count of adjacent chronological events by different people; transitions may share an event",
+      "thresholds": {
+        "cross_person_transitions_within_5_minutes": 41,
+        "cross_person_transitions_within_15_minutes": 187,
+        "cross_person_transitions_within_30_minutes": 351,
+        "cross_person_transitions_within_60_minutes": 518
+      },
+      "closest_pair": {
+        "from_person": "Jakob",
+        "from_timestamp": "2024-02-23 01:30:09",
+        "to_person": "Sina 🥰",
+        "to_timestamp": "2024-02-23 01:30:15",
+        "gap_seconds": 6.0,
+        "gap_formatted": "6s"
+      }
+    },
+    "next_other_person_event_after_each_person_event": {
+      "Jakob": {
+        "count": 1423,
+        "min_seconds": 6.0,
+        "median_seconds": 67132.0,
+        "mean_seconds": 70088.194,
+        "max_seconds": 558458.0,
+        "min_interval": "6s",
+        "max_interval": "6d 11h 7m 38s"
+      },
+      "Sina 🥰": {
+        "count": 1103,
+        "min_seconds": 66.0,
+        "median_seconds": 22043.0,
+        "mean_seconds": 45934.277,
+        "max_seconds": 416623.0,
+        "min_interval": "1m 6s",
+        "max_interval": "4d 19h 43m 43s"
+      }
+    }
+  },
+  "people": {
+    "Jakob": {
+      "emoji": "💩",
+      "count": 1424,
+      "share_percent": 56.35,
+      "active_days": 987,
+      "average_per_calendar_day_in_observed_period": 1.2372,
+      "average_per_active_day": 1.4428,
+      "first_event": "2023-08-22 14:53:50",
+      "last_event": "2026-10-15 11:47:20",
+      "most_active_hour": "09:00",
+      "hourly_counts": {
+        "00": 2,
+        "01": 3,
+        "02": 2,
+        "03": 2,
+        "04": 0,
+        "05": 0,
+        "06": 2,
+        "07": 10,
+        "08": 114,
+        "09": 326,
+        "10": 248,
+        "11": 138,
+        "12": 98,
+        "13": 85,
+        "14": 94,
+        "15": 65,
+        "16": 56,
+        "17": 49,
+        "18": 40,
+        "19": 25,
+        "20": 35,
+        "21": 10,
+        "22": 8,
+        "23": 12
+      },
+      "weekday_counts": {
+        "Monday": 244,
+        "Tuesday": 198,
+        "Wednesday": 203,
+        "Thursday": 218,
+        "Friday": 180,
+        "Saturday": 189,
+        "Sunday": 192
+      },
+      "season_counts": {
+        "Winter": 301,
+        "Frühling": 336,
+        "Sommer": 416,
+        "Herbst": 371
+      },
+      "intervals_between_own_events": {
+        "count": 1423,
+        "min_seconds": 3.0,
+        "median_seconds": 72638.0,
+        "mean_seconds": 69816.451,
+        "max_seconds": 416814.0,
+        "min_interval": "3s",
+        "max_interval": "4d 19h 46m 54s"
+      },
+      "shortest_own_interval": {
+        "from": "2024-03-04 03:39:18",
+        "to": "2024-03-04 03:39:21",
+        "seconds": 3.0,
+        "formatted": "3s"
+      },
+      "longest_own_interval": {
+        "from": "2023-11-04 13:42:46",
+        "to": "2023-11-09 09:29:40",
+        "seconds": 416814.0,
+        "formatted": "4d 19h 46m 54s"
+      },
+      "active_day_streak": {
+        "longest_days": 47,
+        "start": "2026-08-13",
+        "end": "2026-09-28",
+        "streak_count": 140
+      }
+    },
+    "Sina 🥰": {
+      "emoji": "🦄",
+      "count": 1103,
+      "share_percent": 43.65,
+      "active_days": 832,
+      "average_per_calendar_day_in_observed_period": 0.9583,
+      "average_per_active_day": 1.3257,
+      "first_event": "2023-08-22 12:19:28",
+      "last_event": "2026-10-15 09:12:08",
+      "most_active_hour": "10:00",
+      "hourly_counts": {
+        "00": 4,
+        "01": 3,
+        "02": 1,
+        "03": 0,
+        "04": 0,
+        "05": 0,
+        "06": 5,
+        "07": 22,
+        "08": 95,
+        "09": 230,
+        "10": 245,
+        "11": 151,
+        "12": 99,
+        "13": 63,
+        "14": 53,
+        "15": 22,
+        "16": 24,
+        "17": 17,
+        "18": 15,
+        "19": 12,
+        "20": 15,
+        "21": 10,
+        "22": 8,
+        "23": 9
+      },
+      "weekday_counts": {
+        "Monday": 198,
+        "Tuesday": 166,
+        "Wednesday": 146,
+        "Thursday": 152,
+        "Friday": 128,
+        "Saturday": 142,
+        "Sunday": 171
+      },
+      "season_counts": {
+        "Winter": 229,
+        "Frühling": 269,
+        "Sommer": 301,
+        "Herbst": 304
+      },
+      "intervals_between_own_events": {
+        "count": 1102,
+        "min_seconds": 2.0,
+        "median_seconds": 83379.5,
+        "mean_seconds": 90153.14,
+        "max_seconds": 586879.0,
+        "min_interval": "2s",
+        "max_interval": "6d 19h 1m 19s"
+      },
+      "shortest_own_interval": {
+        "from": "2024-03-04 13:50:37",
+        "to": "2024-03-04 13:50:39",
+        "seconds": 2.0,
+        "formatted": "2s"
+      },
+      "longest_own_interval": {
+        "from": "2025-04-06 14:05:15",
+        "to": "2025-04-13 09:06:34",
+        "seconds": 586879.0,
+        "formatted": "6d 19h 1m 19s"
+      },
+      "active_day_streak": {
+        "longest_days": 23,
+        "start": "2024-10-07",
+        "end": "2024-10-29",
+        "streak_count": 233
+      }
+    }
+  }
+}
