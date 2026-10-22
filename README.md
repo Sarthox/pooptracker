@@ -1,4 +1,6 @@
-# Die longitudinale emoji-basierte Defäkationsstudie
+# Das kleine Buch der großen Haufen
+
+**Gewaltige Geschäfte und bewegende Momente**
 
 Ein statischer, deutschsprachiger Privatbericht. Ohne Build-Schritt, Backend,
 Konten, Datenbank, Laufzeit-KI, Telemetrie oder CDN-Anfragen zur Laufzeit.
@@ -20,7 +22,9 @@ bereitstellen: Die Daten sind privat.
 ## Dateien und Daten
 
 - `index.html`: Berichtsstruktur, Überschriften und statische Diskussion.
-- `css/style.css`: responsives Berichtslayout und A5-Druckregeln.
+- `css/style.css`: responsives Berichtslayout mit der Palette Waldgrün,
+  Olivgrün, Sand und einem hellen Salbeigrün für Diagrammhintergründe, abgerundeten
+  Karten und A5-Druckregeln.
 - `js/data.js`: einmaliges, zwischengespeichertes Laden von Statistik und
   Tages-CSV; Ableitung der kumulierten Reihen.
 - `js/story.js`: Kennzahlen, Rekordkarten, persönliche Profile, Statistiktabellen
@@ -52,11 +56,26 @@ Interne IDs, Datenschlüssel und CSV-Spaltennamen nicht übersetzen.
 
 Jede Abbildung besitzt die Schaltfläche **SVG exportieren**. **Bericht drucken**
 bereitet zunächst vektorbasierte SVG-Abbildungen in festen Berichtsmaßen vor
-und öffnet danach den Druckdialog. A5 und 100 % Skalierung wählen,
-Browser-Kopf-/Fußzeilen ausschalten und Hintergrundgrafiken aktivieren.
+und öffnet danach den Druckdialog. Das Dokument ist für A5-Hochformat
+eingerichtet: Der PDF-Seitenrand ist null, der eigentliche Inhalt hält
+vorsichtshalber 10 mm Abstand zum Rand. Dadurch kann der cremefarbene
+Seitenhintergrund bis zum PDF-Rand reichen, während Text und Diagramme
+innerhalb eines sicheren Druckbereichs bleiben. Im Druckdialog A5 und 100 %
+Skalierung wählen, Browser-Kopf-/Fußzeilen ausschalten, Seitenränder auf
+„Keine“ beziehungsweise CSS-Vorgabe setzen und **Hintergrundgrafiken drucken**
+aktivieren. So erscheinen auch der helle Seitenhintergrund und das salbeigrüne
+Diagrammfeld im PDF. Ein physischer Drucker kann dennoch einen nicht bedruckbaren
+Rand haben. Das PDF enthält einzelne A5-Innenseiten, keine Broschüren-
+Ausschießung und keine zusätzliche Beschnittzugabe. Falls die Druckerei einen
+Beschnitt verlangt, vorab ihre Vorgaben erfragen; dafür wird üblicherweise ein
+größeres Seitenformat mit Beschnittzugabe benötigt.
 Der normale Browser-Druckbefehl funktioniert ebenfalls; die Berichtsschaltfläche
-liefert jedoch vorhersehbarere Diagrammgrößen. Einzelne SVGs lassen sich direkt
-in ein späteres Broschürenlayout übernehmen.
+liefert jedoch vorhersehbarere Diagrammgrößen. Vergleichsdiagramme werden im
+Druck paarweise nebeneinander angeordnet und mit passender Schriftgröße für A5
+gerendert. Einzelne SVGs lassen sich direkt
+in ein späteres Broschürenlayout übernehmen. Dieses PDF ist der gestaltete
+Innenteil; Cover, Rückseite und die Seitenanordnung für den Broschürendruck
+werden anschließend mit dem Druckdienstleister abgestimmt.
 
 ## Welche Statistiken werden verwendet?
 
