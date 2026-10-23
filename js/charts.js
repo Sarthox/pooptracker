@@ -6,23 +6,55 @@ window.StudyCharts = (() => {
     olive: '#606C38', forest: '#283618', sand: '#DDA15E', paper: '#E8EEDF'
   };
   const chartIds = [];
+  const fontFamily = 'Voga, serif';
+  const fontSizes = {
+    ticks: 20,
+    labels: 22,
+    legend: 20,
+    center: 36
+  };
+  let embeddedFont;
+
+  async function loadFont() {
+    if (!embeddedFont) embeddedFont = fetch('fonts/Voga-Medium.otf').then(async response => {
+      if (!response.ok) throw new Error(`Voga konnte nicht geladen werden (HTTP ${response.status}).`);
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      let binary = '';
+      for (const byte of bytes) binary += String.fromCharCode(byte);
+      return `data:font/otf;base64,${btoa(binary)}`;
+    });
+    const [fontData, faces] = await Promise.all([embeddedFont, document.fonts.load('500 18px Voga')]);
+    if (!faces.length) throw new Error('Die Voga-Schrift ist nicht im Stylesheet registriert.');
+    await document.fonts.ready;
+    return fontData;
+  }
+
   const config = { responsive: true, displayModeBar: false, scrollZoom: false, locale: 'de' };
   const axis = {
     gridcolor: 'rgba(40,54,24,0.16)', zeroline: false, automargin: true,
-    tickfont: { size: 10, color: colors.ink }, fixedrange: true
+    tickfont: { family: fontFamily, size: fontSizes.ticks, color: colors.ink },
+    title: { font: { family: fontFamily, size: fontSizes.labels }, standoff: 12 },
+    fixedrange: true
   };
 
   function draw(id, traces, options = {}) {
     const layout = {
       paper_bgcolor: colors.paper, plot_bgcolor: colors.paper,
       separators: ',.',
-      font: { family: 'Arial, sans-serif', size: 11, color: colors.ink },
-      margin: { l: 44, r: 18, t: 24, b: 46 },
+      font: { family: fontFamily, size: fontSizes.labels, color: colors.ink },
+      margin: { l: 70, r: 30, t: 48, b: 68 },
       xaxis: { ...axis }, yaxis: { ...axis, rangemode: 'tozero' },
-      legend: { orientation: 'h', x: 0, y: 1.16, font: { size: 11 } },
-      hoverlabel: { bgcolor: colors.paper, font: { family: 'Arial, sans-serif', size: 12 } },
+      legend: { orientation: 'h', x: 0, y: 1.16, font: { family: fontFamily, size: fontSizes.legend } },
+      hoverlabel: { bgcolor: colors.paper, font: { family: fontFamily, size: fontSizes.labels } },
       ...options
     };
+    for (const key of ['xaxis', 'yaxis']) {
+      const title = layout[key].title;
+      layout[key].title = {
+        ...axis.title,
+        ...(typeof title === 'string' ? { text: title } : title)
+      };
+    }
     chartIds.push(id);
     return Plotly.newPlot(id, traces, layout, config);
   }
@@ -38,6 +70,7 @@ window.StudyCharts = (() => {
 
   async function render({ stats, daily, cumulative, jakobKey, sinaKey }) {
     if (!window.Plotly) throw new Error('Die lokale Plotly-Bibliothek fehlt.');
+    await loadFont();
     Plotly.register({
       moduleType: 'locale', name: 'de', dictionary: {},
       format: {
@@ -68,7 +101,7 @@ window.StudyCharts = (() => {
       }
     ], {
       xaxis: { ...axis, type: 'date', nticks: 6 },
-      yaxis: { ...axis, title: { text: 'Haufen-Vorsprung (Meldungen)', font: { size: 11 } }, zeroline: true, zerolinecolor: '#a8a4a0' }
+      yaxis: { ...axis, title: { ...axis.title, text: 'Haufen-Vorsprung (Meldungen)' }, zeroline: true, zerolinecolor: '#a8a4a0' }
     });
 
     await draw('cumulative', [
@@ -88,8 +121,8 @@ window.StudyCharts = (() => {
       hovertemplate: '%{label}: %{value:.2f} %<extra></extra>', showlegend: false
     }], {
       margin: { l: 48, r: 48, t: 30, b: 30 },
-      annotations: [{ text: `${overall.event_count.toLocaleString('de-DE')}<br><span style="font-size:11px">Haufenmeldungen</span>`,
-        showarrow: false, x: .5, y: .5, font: { family: 'Georgia, serif', size: 28 } }]
+      annotations: [{ text: `${overall.event_count.toLocaleString('de-DE')}<br><span style="font-size:${fontSizes.labels}px">Haufenmeldungen</span>`,
+        showarrow: false, x: .5, y: .5, font: { family: fontFamily, size: fontSizes.center } }]
     });
 
     await draw('monthly', participantBars(overall.monthly_counts, jakobKey, sinaKey), {
@@ -127,7 +160,7 @@ window.StudyCharts = (() => {
       bargap: .22, xaxis: { ...axis, type: 'category', tickvals: ['00:00', '06:00', '09:00', '12:00', '18:00', '23:00'], tickangle: -45 },
       yaxis: { ...axis, title: 'Haufenmeldungen' },
       annotations: [{ x: `${peakHour}:00`, y: overall.most_active_hour.count, text: `${overall.most_active_hour.count} Haufen`,
-        showarrow: false, yshift: 14, font: { size: 11, color: '#8642d3' } }]
+        showarrow: false, yshift: 22, font: { family: fontFamily, size: fontSizes.labels, color: '#8642d3' } }]
     });
 
     const months = Object.keys(overall.monthly_counts).sort();
@@ -140,7 +173,8 @@ window.StudyCharts = (() => {
       customdata: rows.map(row => row.map(day => day ? [day.date.split('-').reverse().join('.'), day.jakob, day.sina] : ['', null, null])),
       zmin: 0, zmax: overall.most_active_day.total, xgap: 3, ygap: 3, hoverongaps: false,
       colorscale: [[0, colors.paper], [.125, '#e5dfbd'], [.35, colors.sand], [.65, colors.olive], [1, colors.forest]],
-      colorbar: { title: { text: 'Ereignisse', side: 'right' }, thickness: 8, len: .5, tickvals: [0, 2, 4, 6, 8], outlinewidth: 0 },
+      colorbar: { title: { text: 'Ereignisse', side: 'right', font: { family: fontFamily, size: fontSizes.labels } },
+        tickfont: { family: fontFamily, size: fontSizes.ticks }, thickness: 8, len: .5, tickvals: [0, 2, 4, 6, 8], outlinewidth: 0 },
       hovertemplate: '%{customdata[0]}<br>Haufen gesamt: %{z}<br>Jakob: %{customdata[1]}<br>Sina: %{customdata[2]}<extra></extra>'
     }], {
       margin: { l: 70, r: 55, t: 36, b: 12 },
@@ -186,12 +220,21 @@ window.StudyCharts = (() => {
     });
   }
 
-  function roundSvgBackground(dataUrl) {
+  async function prepareSvg(dataUrl) {
+    const fontData = await loadFont();
     const svg = decodeURIComponent(dataUrl.slice(dataUrl.indexOf(',') + 1));
-    const rounded = svg.replace(/<rect\b(?=[^>]*\bclass="bg")[^>]*\/?>/, match =>
-      match.replace(/\s*\/?>$/, ending => ` rx="10" ry="10"${ending}`)
-    );
-    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(rounded)}`;
+    const document = new DOMParser().parseFromString(svg, 'image/svg+xml');
+    if (document.querySelector('parsererror')) throw new Error('Die SVG-Abbildung konnte nicht verarbeitet werden.');
+    const root = document.documentElement;
+    const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    style.textContent = `@font-face { font-family: Voga; src: url("${fontData}") format("opentype"); font-weight: 500; font-style: normal; } text, tspan { font-family: Voga, serif !important; font-weight: 500 !important; }`;
+    root.insertBefore(style, root.firstChild);
+    const background = Array.from(root.children).find(child => child.localName === 'rect');
+    if (background) {
+      background.setAttribute('rx', '10');
+      background.setAttribute('ry', '10');
+    }
+    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(root))}`;
   }
 
   function imageOptions(id) {
@@ -207,7 +250,7 @@ window.StudyCharts = (() => {
   }
 
   async function exportSvg(id) {
-    const url = roundSvgBackground(await Plotly.toImage(document.getElementById(id), imageOptions(id)));
+    const url = await prepareSvg(await Plotly.toImage(document.getElementById(id), imageOptions(id)));
     const link = document.createElement('a');
     link.href = url;
     link.download = `emoji-studie-${id}.svg`;
@@ -224,7 +267,7 @@ window.StudyCharts = (() => {
       const image = new Image();
       image.className = 'print-image';
       image.alt = plot.getAttribute('aria-label');
-      image.src = roundSvgBackground(await Plotly.toImage(
+      image.src = await prepareSvg(await Plotly.toImage(
         plot, printImageOptions(id, Boolean(plot.closest('.chart-pair')))
       ));
       await image.decode();

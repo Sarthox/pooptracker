@@ -12,7 +12,7 @@ Diesen Ordner mit einem beliebigen statischen HTTP-Server bereitstellen und
 CSV und JSON nicht zuverlässig nachladen. Beispiel bei installiertem Python:
 
 ```powershell
-Set-Location 'C:\azure\notes\AI\dataanalyze'
+Set-Location 'C:\Users\049jschumann\code\pooptracker'
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
@@ -31,6 +31,12 @@ bereitstellen: Die Daten sind privat.
   und datenbezogene Begleittexte.
 - `js/charts.js`: dreizehn Plotly-Diagramme, SVG-Downloads und Druckabbildungen.
 - `js/main.js`: Initialisierung sowie Export- und Druckschaltflächen.
+- `fonts/`: die bereitgestellte Voga-Medium-Schrift und die beiliegenden
+  Lizenzbedingungen (`Voga_CDType_LA.pdf`). Website und Diagramme verwenden Voga;
+  die Schrift wird vor der Diagrammerstellung geladen und in SVG-Downloads
+  sowie Druckabbildungen eingebettet. SVG-Programme müssen eingebettete
+  Webschriften unterstützen; andernfalls Voga zusätzlich lokal installieren.
+  Enthalten ist nur der Medium-Schnitt; Fett/Kursiv sind keine separaten Fontdateien.
 - `data/`: feste Datensatzkopien für den Bericht. Die Originale im Hauptordner
   bleiben erhalten.
 - `js/vendor/`: lokale Versionen von Plotly 2.35.2 und PapaParse 5.4.1
@@ -51,6 +57,12 @@ sichtbar; nicht existierende Tage und Tage außerhalb des Zeitraums bleiben leer
 Statische Texte stehen in `index.html`, dynamische Karten und Begleittexte
 in `js/story.js`, Achsen, Legenden und Diagrammhinweise in `js/charts.js`.
 Interne IDs, Datenschlüssel und CSV-Spaltennamen nicht übersetzen.
+
+Die Diagrammschriftgrößen stehen ganz oben in `js/charts.js` im Objekt
+`fontSizes`: `ticks` für Achsenwerte, `labels` für Beschriftungen und Achsentitel,
+`legend` für Legenden und `center` für die große Zahl im Ringdiagramm.
+Die Werte gelten für Website, SVG-Export und Druckabbildungen. Nach Änderungen
+die Seite neu laden und SVGs beziehungsweise das PDF neu erzeugen.
 
 ## Druck und Abbildungsexport
 
